@@ -4,7 +4,7 @@
     <app-edit-todo></app-edit-todo>
   </header>
   <section class='main'>
-    <input id='toggle-all' class='toggle-all' type='checkbox' (click)="onToggleAll()"/>
+    <input id='toggle-all' class='toggle-all' type='checkbox' (click)="onToggleAll($event)"/>
     <label for='toggle-all'>Mark all as complete</label>
     <ul class='todo-list'>
       <app-single-todo *ngFor="let todo of todos | filter:currentFilter"

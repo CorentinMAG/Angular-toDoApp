@@ -14,15 +14,14 @@ export class EditTodoComponent implements OnInit {
   ngOnInit() {
   }
 
-  createTodo(): void {
-    const input: HTMLInputElement = document.querySelector('input')
+  createTodo(e): void {
     const todo: Todo = {
       id: this.todoStore.myTodos.length,
-      title: input.value,
+      title: e.target.value,
       completed: false
     }
     this.todoStore.addTodo(todo)
-    input.value = ''
+    e.target.value = ''
 
   }
 

@@ -41,9 +41,8 @@ export class SingleTodoComponent implements OnInit {
     this.title = e.target.value
   }
 
-  updateTodo(): void {
-    const input: HTMLInputElement = document.querySelector(`#todo_${this.myTodo.id}`)
-    const newTitle: string = input.value
+  updateTodo(e: FocusEvent): void {
+    const newTitle: string = e.target.value
     this.todoStore.updateTitle(newTitle, this.myTodo)
     this.editing = false
   }

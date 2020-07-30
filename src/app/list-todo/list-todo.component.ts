@@ -48,9 +48,8 @@ export class ListTodoComponent implements OnInit, OnDestroy {
     return completed.length
   }
 
-  onToggleAll(): void {
-    const toggle: HTMLInputElement = document.querySelector('#toggle-all')
-    const is_checked: boolean = toggle.checked
+  onToggleAll(e: MouseEvent): void {
+    const is_checked: boolean = e.target.checked
     this.todoService.toggleAll(is_checked)
   }
 

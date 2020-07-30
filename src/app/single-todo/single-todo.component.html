@@ -8,7 +8,7 @@
          class='edit'
          id="todo_{{myTodo.id}}"
          value='{{title}}'
-         (blur)="updateTodo()"
+         (blur)="updateTodo($event)"
          (input)="handleInput($event)"
          (keydown.escape)="removeChange()"
          (keydown.enter)="updateTodo()"
