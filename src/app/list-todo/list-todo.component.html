@@ -1,0 +1,25 @@
+<section class='todoapp'>
+  <header class='header'>
+    <h1>todos</h1>
+    <app-edit-todo></app-edit-todo>
+  </header>
+  <section class='main'>
+    <input id='toggle-all' class='toggle-all' type='checkbox' (click)="onToggleAll()"/>
+    <label for='toggle-all'>Mark all as complete</label>
+    <ul class='todo-list'>
+      <app-single-todo *ngFor="let todo of todos | filter:currentFilter"
+                       [todo] = "todo"
+      ></app-single-todo>
+    </ul>
+  </section>
+  <footer class='footer'>
+  <span [ngPlural]="todolength" class='todo-count' *ngIf="todolength>0">
+    <strong>{{todolength}} </strong>
+    <ng-template ngPluralCase="=1">item</ng-template>
+    <ng-template ngPluralCase="other">items</ng-template>
+  </span>
+    <app-filter-todo></app-filter-todo>
+    <button *ngIf="getCompleted>0" class='clear-completed' (click)="onClearCompleted()" >Clear completed</button>
+  </footer>
+</section>
+

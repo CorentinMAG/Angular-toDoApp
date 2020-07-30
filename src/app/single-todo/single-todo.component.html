@@ -1,0 +1,16 @@
+<li data-id='1595950496588' [ngClass]="{'completed':myTodo.completed,'editing':editing === true}" >
+  <div class='view'>
+    <input class='toggle' type='checkbox' [checked]="myTodo.completed" (click)="toggleTodo()" />
+    <label (dblclick)="startEditing()">{{myTodo.title}}</label>
+    <button class='destroy' (click)="deleteTodo()"></button>
+  </div>
+  <input type='text'
+         class='edit'
+         id="todo_{{myTodo.id}}"
+         value='{{title}}'
+         (blur)="updateTodo()"
+         (input)="handleInput($event)"
+         (keydown.escape)="removeChange()"
+         (keydown.enter)="updateTodo()"
+         />
+</li>

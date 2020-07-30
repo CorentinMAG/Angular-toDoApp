@@ -1,0 +1,11 @@
+<ul class='filters'>
+  <li>
+    <a href='#/' [ngClass]="{selected:all}" (click)="filterAll()">All</a>
+  </li>
+  <li>
+    <a href='#/active' [ngClass]="{selected:active}" (click)="filterActive()">Active</a>
+  </li>
+  <li>
+    <a href='#/completed' [ngClass]="{selected:completed}" (click)="filterCompleted()">Completed</a>
+  </li>
+</ul>
