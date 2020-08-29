@@ -8,8 +8,8 @@ import {FILTERS} from '../service/todo-store.service';
 
 export class SearchTextPipe implements PipeTransform {
   transform(todoList: Todo[] , filter: FILTERS) {
-    if(filter === 'All') {  return todoList }
-    else if (filter === 'Active') { return todoList.filter( t => !t.completed) }
-    else { return todoList.filter( t => t.completed)}
+    if (filter === 'All') {  return todoList; }
+    else if (filter === 'Active') { return todoList.filter( t => !t.completed); }
+    else { return todoList.filter( t => t.completed); }
   }
 }

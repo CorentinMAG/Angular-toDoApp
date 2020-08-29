@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import Todo from '../model/todoModel'
+import Todo from '../model/todoModel';
 import {Subject} from 'rxjs';
 
-export type FILTERS = 'All' | 'Active' | 'Completed'
+export type FILTERS = 'All' | 'Active' | 'Completed';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export type FILTERS = 'All' | 'Active' | 'Completed'
 export class TodoStoreService {
 
 
-  private filter: FILTERS = 'All'
+  private filter: FILTERS = 'All';
   private todos: Todo[] = [
     {
       id: 0,
@@ -27,56 +27,56 @@ export class TodoStoreService {
       title: 'Mon troisième todo',
       completed: false
   }];
-  todoSubject = new Subject<Todo[]>()
-  filterSubject = new Subject<FILTERS>()
+  todoSubject = new Subject<Todo[]>();
+  filterSubject = new Subject<FILTERS>();
 
   constructor() {
   }
 
   enableFilter(filter: FILTERS): void {
-    this.filter = filter
-    this.emitFilter()
+    this.filter = filter;
+    this.emitFilter();
   }
 
   get myTodos(): Todo[] {
-    return this.todos
+    return this.todos;
   }
 
   emitFilter(): void {
-    this.filterSubject.next(this.filter)
+    this.filterSubject.next(this.filter);
   }
-  emitTodo (): void {
-    this.todoSubject.next(this.todos)
-  }
-
-  addTodo (todo: Todo): void {
-    this.todos.unshift(todo)
-    this.emitTodo()
-
+  emitTodo(): void {
+    this.todoSubject.next(this.todos);
   }
 
-  removeTodo (todo: Todo): void {
-    this.todos = this.todos.filter( t => t !== todo)
-    this.emitTodo()
+  addTodo(todo: Todo): void {
+    this.todos.unshift(todo);
+    this.emitTodo();
+
   }
 
-  toggleTodo (todo: Todo): void {
-    this.todos = this.todos.map( t => t === todo ? {...t, completed:!t.completed} : t)
-    this.emitTodo()
+  removeTodo(todo: Todo): void {
+    this.todos = this.todos.filter( t => t !== todo);
+    this.emitTodo();
+  }
+
+  toggleTodo(todo: Todo): void {
+    this.todos = this.todos.map( t => t === todo ? {...t, completed: !t.completed} : t);
+    this.emitTodo();
   }
 
   updateTitle(title: string, todo: Todo): void {
-    this.todos = this.todos.map(t => t === todo ? {...t, title} : t)
-    this.emitTodo()
+    this.todos = this.todos.map(t => t === todo ? {...t, title} : t);
+    this.emitTodo();
   }
 
   toggleAll(completed = true): void {
-    this.todos = this.todos.map(t => completed !== t.completed ? {...t, completed} : t)
-    this.emitTodo()
+    this.todos = this.todos.map(t => completed !== t.completed ? {...t, completed} : t);
+    this.emitTodo();
   }
 
   clearCompleted(): void {
-    this.todos = this.todos.filter(t => !t.completed)
-    this.emitTodo()
+    this.todos = this.todos.filter(t => !t.completed);
+    this.emitTodo();
   }
 }

@@ -9,8 +9,8 @@ import {TodoStoreService} from '../service/todo-store.service';
 })
 export class SingleTodoComponent implements OnInit {
 
-  private editing: boolean = false
-  private title: string = ''
+  private editing: boolean = false;
+  private title: string = '';
 
   constructor(private todoStore: TodoStoreService) { }
 
@@ -20,36 +20,36 @@ export class SingleTodoComponent implements OnInit {
   }
 
   get myTodo(): Todo {
-    return this.todo
+    return this.todo;
   }
 
   deleteTodo(): void {
-    this.todoStore.removeTodo(this.myTodo)
+    this.todoStore.removeTodo(this.myTodo);
   }
 
   toggleTodo(): void {
-    this.todoStore.toggleTodo(this.myTodo)
+    this.todoStore.toggleTodo(this.myTodo);
 
   }
 
   startEditing(): void {
-    this.editing = true
-    this.title = this.myTodo.title
+    this.editing = true;
+    this.title = this.myTodo.title;
   }
 
   handleInput(e): void {
-    this.title = e.target.value
+    this.title = e.target.value;
   }
 
-  updateTodo(e: FocusEvent): void {
-    const newTitle: string = e.target.value
-    this.todoStore.updateTitle(newTitle, this.myTodo)
-    this.editing = false
+  updateTodo(e): void {
+    const newTitle: string = e.target.value;
+    this.todoStore.updateTitle(newTitle, this.myTodo);
+    this.editing = false;
   }
 
   removeChange(): void {
-    this.title = this.myTodo.title
-    this.editing = false
+    this.title = this.myTodo.title;
+    this.editing = false;
   }
 
 }
